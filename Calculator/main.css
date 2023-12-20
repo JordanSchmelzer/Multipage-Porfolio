@@ -1,0 +1,398 @@
+:root{
+    /* STATIC SCROLLBAR */
+    --scrollbar-theme0: black;
+    --scrollbar-thumb-theme0: #6649b8;
+
+    /* STATIC NAVBAR */
+    --bg-navbar: #23232e;
+    --bg-navbar-logo: #16161d;
+    --bg-navbar-hover: #141418;
+    --text-navbar: #ececec;
+    --text-logo-hover: #ebe6ee;
+    --text-theme-hover: white;
+    --text-theme: white;
+    --theme-logo-primary: #df49a6;
+    --theme-logo-secondary: #df49a6;
+    --nav-icon-summer: #f4a261;;
+    --nav-icon-cool: #457b9d;;
+    --nav-icon-dirt: #9c6644;;
+
+    /* TRANSITION SPEEDS */
+    --transition-keys: 200ms ease-in-out;
+    --transition-navbar: 600ms ease-in-out;
+    --transition: 500ms ease-in-out;
+}
+
+/* THEMES */
+.theme-default{
+    --bg-app: linear-gradient(to right, rgb(21, 3, 22), rgb(61, 10, 65));
+    --bg-calculator: hsl(0, 3%, 14%);
+
+    --display-text: #ececec;
+    --display-brackets: #b6b6b6;
+    --keyboard: #333742;
+    --operator: hsl(7, 100%, 68%);
+    --action: hsl(153, 71%, 59%);
+    --key-text: hsl(0, 2%, 75%);
+    --key-bg: #262933;
+    --glow: rgb(224, 75, 224);
+}
+.theme-summer{
+     /* THEME1 */
+     --bg-app: linear-gradient(to right, rgb(21, 3, 22), rgb(216, 145, 51));
+     --bg-calculator: hsl(0, 0%, 14%);
+
+     --display-text: #fff6f6;
+     --display-brackets:#264653;
+     --keyboard: #f4a261; 
+     --operator: #e76f51;
+     --action: #e9c46a;
+     --key-text: hsl(0, 0%, 100%);
+     --key-bg:#2a9d8f;
+     --glow: rgb(59, 211, 231);
+}
+.theme-cool{
+     /* THEME2 */
+     --bg-app: linear-gradient(to right, rgb(21, 3, 22), #1d3557);
+     --bg-calculator: hsl(0, 0%, 14%);
+
+     --display-text: #ececec;
+     --display-brackets: #f1faee; 
+     --operator: #e63946;
+     --action: #a8dadc;
+     --key-text: hsl(0, 2%, 75%);
+     --key-bg: #457b9d;
+     --glow: rgb(142, 223, 243);
+}
+.theme-dirt{
+     /* THEME3 */
+     --bg-app: linear-gradient(to right, rgb(21, 3, 22), #7f5539);
+     --bg-calculator: hsl(0, 0%, 14%);
+
+     --display-text: #ede0d4;
+     --display-brackets: #e6ccb2;
+     --operator: #9c6644;
+     --action: #ddb892;
+     --key-text: hsl(0, 2%, 75%);
+     --key-bg: #b08968;
+     --glow: rgb(235, 160, 74);
+}
+
+*{
+    box-sizing: border-box;
+    font-family:sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+}
+main {
+  margin-left: 5rem;
+  padding: 1rem;
+}
+
+/* supercool color animation */
+@keyframes color-rotate{
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to{
+    filter: hue-rotate(360deg);
+  }
+}
+.logo:hover{
+  animation:color-rotate 1s;
+  animation-iteration-count: infinate;
+  animation-direction: alternate;
+}
+.logo-text:hover{
+  animation:color-rotate 1s;
+  animation-iteration-count: infinate;
+  animation-direction: alternate;
+}
+
+/* super cool flexible polygon for user */
+/* header{
+  padding: 1em;
+  background: red;
+  margin-bottom: 1em;
+  padding-bottom: 3.5em;
+  clip-path: polygon(50% 0%, 100% 0, 50% 100%, 0 65%, 0 0);
+} */
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-theme0);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-theme0);
+}
+  
+/* Navigation menu */
+.navbar {
+  position: fixed;
+  background-color: var(--bg-navbar);
+  transition: width var(--transition-navbar);
+}
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.nav-item {
+  width: 100%;
+}
+.nav-item:last-child {
+  margin-top: auto;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-navbar);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-navbar);
+}
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-navbar-hover);
+  color: var(--text-theme-hover);
+  font-size: 1.2rem;
+}
+.link-text {
+  display: none;
+  margin-left: 1rem;
+}
+.nav-link svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+.fa-primary {
+  color: var(--theme-logo-primary);
+}
+.fa-secondary {
+  color: var(--theme-logo-secondary);
+}
+.fa-primary,
+.fa-secondary {
+  transition: var(--transition-navbar);
+}
+.nav-theme-summer{
+  color: var(--nav-icon-summer);
+}
+.nav-theme-cool{
+  color: var(--nav-icon-cool);
+}
+.nav-theme-dirt{
+  color: var(--nav-icon-dirt);
+}
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  color: var(--text-theme);
+  background: var(--bg-navbar-logo);
+  font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  width: 100%;
+}
+.logo svg {
+  transform: rotate(0deg);
+  transition: var(--transition-navbar);
+  /* margin-left: 10px; */
+}
+.logo-text{
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: var(--transition);
+}
+.navbar:hover .logo svg {
+  transform: rotate(-180deg);
+}
+/* NAVBAR - Small screens */
+@media only screen and (max-width: 600px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+  }
+  .logo {
+    display: none;
+  }
+  .navbar-nav {
+    flex-direction: row;
+  }
+  .nav-link {
+    justify-content: center;
+  }
+  .calculator{
+    margin-bottom: 3rem;
+  }
+}
+/* NAVBAR - Large screens */
+@media only screen and (min-width: 600px) {
+  .navbar {
+    top: 0;
+    width: 7rem;
+    height: 100vh;
+  }
+  .navbar:hover {
+    width: 18rem;
+  }
+  .navbar:hover .link-text {
+    display: inline;
+  }
+  .navbar:hover .logo svg
+  {
+    margin-left: 12.5rem;
+  } 
+  .navbar:hover .logo-text
+  {
+    left: 0px;
+  }
+}
+
+/* basically  just the view */
+.app{
+    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg-app);
+}
+.calculator{
+    background-color: var(--bg-calculator);
+    width: 100%;
+    max-width: 375px;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+/* Display in calculator */
+.display{
+    min-height: 200px;
+    padding: 1.5 rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: var(--display-text);
+    text-align: right;
+    flex: 1 1 0%;
+}
+.display .input{
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+
+}
+.display .output{
+    font-size: 3rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+}
+.display .operator{
+    color:var(--operator);
+}
+.display .brackets{
+    color:var(--display-brackets);
+}
+
+/* calculator keys */
+.keys{
+    background-color: var(--keyboard);
+    padding:1.5rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
+    grid-gap: 1rem;
+    box-shadow: 0px -2px 16px var(--glow);
+} 
+.keys .key{
+    position: relative;
+    cursor: pointer;
+    display: block;
+    height: 0;
+    padding-top: 100%;
+    background-color: var(--key-bg);
+    border-radius: 1rem;
+    transition: .5s;
+    user-select: none;
+
+}
+.keys .key span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--key-text);
+} 
+.keys .key:hover{
+    box-shadow: 0px 0px 8px var(--glow);
+    transition: var(--transition-keys);
+}
+.keys .key.operator span{
+    color: var(--operator);
+}
+.keys .key.action span{
+    color: var(--action);
+}
+
+/* Hidden menus */
+.collapsible { 
+    background-color: #5e8576;
+    color: var(--operator-theme0);
+    cursor: pointer;
+    padding: 1px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+}
+
+/* ARROW KEYS Use in combo with > in HTML */
+.arrow { 
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px; 
+} 
+.right { 
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.down{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.left{
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-225deg);
+}
+.up{
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
